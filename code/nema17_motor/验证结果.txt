@@ -1,0 +1,12 @@
+验证日期：2026-11-01
+目标：ATmega2560，F_CPU=16000000UL。
+编译：avr-gcc 7.3.0，gnu11，-Os，-Wall -Wextra -Werror，LTO；通过，零警告。
+编译范围：完整工程的 main、motor、timer、usart、command、command_motor。
+程序占用：3432 B；静态 RAM：772 B。
+已生成 firmware/firmware.hex。
+
+主机集成验证：29 项检查通过。
+直接使用本工程 motor、timer、command、command_motor 源码，模拟 AVR 寄存器与串口输入。
+检查内容：上电停止、两台启动、重复启动不重置、分别调速/停止/启动/换向、另一台不受影响、Timer3 时基配置保持、频率上下界、错误电机编号、错误参数、超长命令后恢复、状态输出。
+模拟寄存器不能验证真实电气波形、机械转动或驱动器接线。
+本轮没有烧录，没有操作开发板和电机。

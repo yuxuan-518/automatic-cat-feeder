@@ -1,0 +1,58 @@
+项目21双步进电机版本
+
+基于原 21_nonblocking_stepper_control，目标板 Arduino Mega 2560 / ATmega2560，16 MHz。
+保留寄存器级 C、PlatformIO、串口命令和 Timer3 毫秒时基。
+原项目未修改；本目录是可单独打开的完整工程。
+
+引脚（Mega 板上标注的数字引脚）
+电机1：STEP = D11（PB5 / OC1A / Timer1），DIR = D12（PB6）。
+电机2：STEP = D6（PH3 / OC4A / Timer4），DIR = D7（PH4）。
+STEP 接对应驱动器的脉冲输入，DIR 接对应驱动器的方向输入。
+驱动器的 PUL+/PUL-、DIR+/DIR- 接法取决于实际驱动器及共阳/共阴接线，本工程没有指定 ENA 接线。
+引脚映射依据 Arduino 官方 Mega 2560 引脚表：
+https://docs.arduino.cc/resources/pinouts/A000067-full-pinout.pdf
+
+启动
+默认上电两台均停止，默认每台 STEP 频率均为 100 Hz。
+串口：9600 baud，8N1；命令以换行 LF 或 CRLF 结尾。
+发送 start：两台开始输出脉冲（顺序启动，不保证首个边沿精确同步）。
+发送 stop：两台停止输出脉冲。
+
+常用命令
+start          启动两台
+stop           停止两台
+start 1        只启动电机1
+start 2        只启动电机2
+stop 1         只停止电机1
+stop 2         只停止电机2
+speed 200      两台设为200 Hz
+speed 1 300    电机1设为300 Hz
+speed 2 500    电机2设为500 Hz
+reverse        两台换向
+reverse 1      电机1换向
+reverse 2      电机2换向
+status         查看两台状态
+status 1       查看电机1状态
+status 2       查看电机2状态
+help           查看命令
+
+两台独立启动示例
+speed 1 200
+speed 2 300
+start
+
+如需上电自动启动，将 src/main.c 中 START_BOTH_ON_BOOT 从 0 改为 1。
+
+原理与范围
+Timer1 和 Timer4 分别在 CTC 模式翻转 OC1A、OC4A，CPU 不需要逐个产生 STEP 边沿。
+两台可独立起停、设置频率和改变 DIR。重复 start 不会重置已运行电机的计数器。
+频率范围沿用项目21：50–8000 Hz；Hz 是脉冲频率，转速还取决于电机步距和驱动器细分。
+沿用项目21的 /64 分频，实际频率按整数 OCR 量化，在较高频率下会有偏差；8000 Hz 设置对应约8333 Hz。
+启动、调速与换向没有加减速斜坡；reverse 只是短暂停脉冲后切换 DIR，再恢复脉冲。
+本版只扩展项目21，不包含项目24/25之后的限位、回零和急停状态机。
+stop 停止 STEP 时保留该输出电平，不控制驱动器使能或电机断电。
+D6/D7 已用于第二台电机，后续整合项目40时需要重新分配 LED/超声波资源。
+
+构建与烧录
+使用 VS Code + PlatformIO 打开本目录，选择 megaatmega2560 环境构建；连接开发板后手动执行 Upload。
+本轮未自动烧录或驱动实物。
