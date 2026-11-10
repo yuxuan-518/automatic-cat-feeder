@@ -4,9 +4,9 @@
 
 ### Physical feeder demonstration
 
-[<img src="assets/images/physical-feeder-preview.jpg" alt="Wooden automatic feeder with dry food in the tray. Open the demonstration video." width="280">](assets/videos/physical-feeder-demo.mp4)
+https://github.com/user-attachments/assets/c59baec1-f67d-42fb-a996-3e236662332d
 
-[▶ Watch the physical feeder demonstration](assets/videos/physical-feeder-demo.mp4)
+[Original MP4](assets/videos/physical-feeder-demo.mp4)
 
 The wooden prototype holds dry food in the upper container and dispenses it into the tray below.
 
@@ -77,12 +77,16 @@ The source collection was exported from [147y111/Automatic-Cat-Feeder](https://g
 
 ### CAD motion demonstration
 
-[▶ Watch the CAD motion demonstration](assets/videos/cad-motion-demo.mp4)
+https://github.com/user-attachments/assets/a7c9b2fb-3641-49a7-8419-77b7b140d8c6
+
+[Original MP4](assets/videos/cad-motion-demo.mp4)
 
 The recording shows the modeled feeder and the movement of the dispensing components.
 
 ### Higher-torque motor rotation test
 
-[▶ Watch the higher-torque motor test](assets/videos/high-torque-motor-test.mp4)
+https://github.com/user-attachments/assets/5e9e7f10-3b1f-4831-bc06-c6b5c9f37e5c
+
+[Original MP4](assets/videos/high-torque-motor-test.mp4)
 
 The bench recording shows the higher-torque motor and its driver during a rotation test.
