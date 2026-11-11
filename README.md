@@ -73,15 +73,7 @@ The **higher-torque** version drives a CL86Y-V20 configured at **1,600 pulses pe
 
 The source collection was exported from [147y111/Automatic-Cat-Feeder](https://github.com/147y111/Automatic-Cat-Feeder/tree/46711cf435dc37880b16b992918d4c8a72f1e8ab). Its export records retain the original filenames.
 
-## CAD demonstration and motor test
-
-### CAD motion demonstration
-
-https://github.com/user-attachments/assets/a7c9b2fb-3641-49a7-8419-77b7b140d8c6
-
-[Original MP4](assets/videos/cad-motion-demo.mp4)
-
-The recording shows the modeled feeder and the movement of the dispensing components.
+## Motor test
 
 ### Higher-torque motor rotation test
 
